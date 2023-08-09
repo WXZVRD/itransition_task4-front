@@ -50,9 +50,9 @@ const TableList: FC = ( ) => {
                         backgroundColor: '#F5F5F5',
                     },
                 }}>
-                {(status === 'loading' ? Array(5) : list && list).map((user: IUser) => (
-                    (status === 'loading'
-                        ? <Skeleton variant="rounded" width={210} height={60} />
+                {(status === 'loading' || 'error' ? new Array(5) : list && list).map((user: IUser) => (
+                    (status === 'loading' || 'error'
+                        ? <Skeleton variant="rounded" width={1200} height={100} />
                         : <TableRow key={user.id} user={user} />)
                 ))}
             </List>
