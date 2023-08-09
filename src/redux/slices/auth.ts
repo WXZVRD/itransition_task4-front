@@ -48,7 +48,7 @@ export const userSlice = createSlice({
                 stat: '',
                 blocked: 0,
                 selected: false
-            },
+            }
             state.token = ''
 
             LS.clear()
