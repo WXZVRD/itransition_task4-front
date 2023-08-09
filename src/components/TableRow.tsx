@@ -20,7 +20,7 @@ const TableRow: FC<TableRowProps> = ({ user }) => {
     return (
         <ListItem
             id={user.id.toString()}
-            sx={{padding: '18px 0', flexGrow: 1,
+            sx={{padding: '25px 0', flexGrow: 1,
                 display: "flex",
                 alignItems: "center",
                 borderBottom: "1px solid #E7EAEE",
