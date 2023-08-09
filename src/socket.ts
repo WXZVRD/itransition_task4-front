@@ -1,5 +1,5 @@
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:3301');
+const socket = io('https://itransition-task4-backend-wxzvrd.onrender.com');
 
 export default socket;
