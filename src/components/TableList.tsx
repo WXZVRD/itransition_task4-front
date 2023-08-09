@@ -1,7 +1,7 @@
-import {Box, List} from '@mui/material';
+import {Box, List, Skeleton} from '@mui/material';
 import TableHeader from './TableHeader';
 import TableRow from './TableRow';
-import {FC, useEffect, useState} from "react";
+import {FC, useEffect} from "react";
 import {useAppDispatch, useAppSelector} from "../redux/hook";
 import {changeStatus, fetchUsers} from "../redux/controller/usersController";
 import {setBlockedStatus} from "../redux/slices/usersSlice";
@@ -21,7 +21,7 @@ export interface IUser {
 }
 
 const TableList: FC = ( ) => {
-    const { list } = useAppSelector(state => state.users);
+    const { list, status } = useAppSelector(state => state.users);
     const dispatch = useAppDispatch()
 
     useEffect(() => {
@@ -50,8 +50,10 @@ const TableList: FC = ( ) => {
                         backgroundColor: '#F5F5F5',
                     },
                 }}>
-                {list && list.map((user: IUser) => (
-                    <TableRow key={user.id} user={user} />
+                {(status === 'loading' ? Array(5) : list && list).map((user: IUser) => (
+                    (status === 'loading'
+                        ? <Skeleton variant="rounded" width={210} height={60} />
+                        : <TableRow key={user.id} user={user} />)
                 ))}
             </List>
         </Box>
