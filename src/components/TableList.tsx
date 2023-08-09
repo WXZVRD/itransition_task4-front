@@ -1,4 +1,4 @@
-import {Box, List, Skeleton} from '@mui/material';
+import {Box, List} from '@mui/material';
 import TableHeader from './TableHeader';
 import TableRow from './TableRow';
 import {FC, useEffect} from "react";
@@ -50,10 +50,8 @@ const TableList: FC = ( ) => {
                         backgroundColor: '#F5F5F5',
                     },
                 }}>
-                {(status === 'loading' || 'error' ? new Array(5) : list && list).map((user: IUser) => (
-                    (status === 'loading' || 'error'
-                        ? <Skeleton variant="rounded" width={1200} height={100} />
-                        : <TableRow key={user.id} user={user} />)
+                {list && list.map((user: IUser) => (
+                    <TableRow key={user.id} user={user} />
                 ))}
             </List>
         </Box>
